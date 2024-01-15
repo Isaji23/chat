@@ -12,9 +12,8 @@ import org.jetbrains.annotations.NotNull;
 import util.Util;
 
 import static util.EchoError.ERROR_HOST_INVALIDO;
-import static util.Util.error;
-import static util.Util.mensaje;
 import static util.Conf.APODO_SERVIDOR;
+import static util.Util.*;
 
 /**
  * Cliente Chat
@@ -50,7 +49,7 @@ public class ClienteChat {
         } catch (UnknownHostException e) {
             error(ERROR_HOST_INVALIDO, args[1]);
             uso();
-            System.exit(1);
+            finalizar(ERROR_HOST_INVALIDO);
         }
 
         int puertoServidor = Integer.parseInt(args[2]);         // TODO: 17/12/2023 T05, T08

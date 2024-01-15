@@ -47,4 +47,8 @@ public class Util {
         }
         return clazz.getSimpleName();
     }
+
+    public static void finalizar(EchoError e) {
+        System.exit(e.getNumero());
+    }
 }

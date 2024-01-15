@@ -5,10 +5,12 @@ import java.net.Socket;
 import util.Util;
 
 import static util.Conf.MAX_PUERTO;
+import static util.EchoError.ERROR_HOST_INVALIDO;
 import static util.EchoError.ERROR_PUERTO_INVALIDO;
 import static util.Util.error;
 import static util.Conf.APODO_SERVIDOR;
 import static util.Conf.MIN_PUERTO;
+import static util.Util.finalizar;
 
 
 /**
@@ -57,12 +59,12 @@ public class ServidorChat {
             if (puerto < MIN_PUERTO.n() || puerto > MAX_PUERTO.n()) {
                 error(ERROR_PUERTO_INVALIDO, puerto);
                 uso();
-                System.exit(1);
+                finalizar(ERROR_PUERTO_INVALIDO);
             }
         } catch (NumberFormatException e) {
             error(ERROR_PUERTO_INVALIDO, puerto);
             uso();
-            System.exit(1);
+            finalizar(ERROR_PUERTO_INVALIDO);
         }
 
         new ServidorChat(puerto, MAX_CLIENTES).iniciar();
